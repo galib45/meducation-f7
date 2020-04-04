@@ -33,6 +33,7 @@
     </platform>
 
     <access origin="*" />
+    <access origin="http://galib45.herokuapp.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
