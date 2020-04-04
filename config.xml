@@ -34,6 +34,7 @@
 
     <access origin="*" />
     <access origin="http://galib45.herokuapp.com" />
+    <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
