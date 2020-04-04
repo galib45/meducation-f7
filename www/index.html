@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Your app title -->
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS -->
+    <link rel="stylesheet" href="lib/framework7/css/framework7.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div id="app" class="color-theme-white">
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
+        
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div data-name="home" class="page">
+    
+                <!-- Top Navbar -->
+                <div class="navbar text-color-black">
+                    <div class="navbar-inner">
+                        <div class="left padding-left">
+                            <img src="img/icon.png" width="30" height="30" alt="">
+                        </div>
+                        <div class="title">
+                            Meducation
+                        </div>
+                    </div>
+                </div>
+        
+                <!-- Scrollable page content -->
+                <div class="page-content ptr-content">
+                    <div class="ptr-preloader">
+                        <div class="preloader"></div>
+                        <div class="ptr-arrow"></div>
+                    </div>
+                    <div class="list media-list chevron-center no-margin-top no-margin-bottom">
+                        <ul></ul>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="view" >
+            <div class="page" id="article">
+                <div class="navbar text-color-black">
+                    <div class="navbar-inner sliding">
+                        <div class="left">
+                            <a href="#" class="link back">
+                                <i class="icon icon-back color-black"></i>
+                            </a>
+                        </div>
+                        <div class="title">Read Article</div>
+                    </div>
+                </div>
+                <div class="page-content">
+                    <div class="block-title">Welcome to Articles</div>
+                    <div class="block block-strong">
+                        <p>Framework7 - is a free and open source HTML mobile framework to develop hybrid mobile apps or web apps with iOS or Android (Material) native look and feel. It is also an indispensable prototyping apps tool to show working app prototype as soon as possible in case you need to. Framework7 is created by Vladimir Kharlampidi (iDangero.us).</p>
+                        <p>The main approach of the Framework7 is to give you an opportunity to create iOS and Android (Material) apps with HTML, CSS and JavaScript easily and clear. Framework7 is full of freedom. It doesn't limit your imagination or offer ways of any solutions somehow. Framework7 gives you freedom!</p>
+                        <p>Framework7 is not compatible with all platforms. It is focused only on iOS and Android (Material) to bring the best experience and simplicity.</p>
+                        <p>Framework7 is definitely for you if you decide to build iOS and Android hybrid app (Cordova or PhoneGap) or web app that looks like and feels as great native iOS or Android (Material) apps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/helper.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+
+</html>
