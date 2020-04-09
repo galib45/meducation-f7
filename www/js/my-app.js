@@ -60,7 +60,13 @@ var app = new Framework7({
 var mainView = app.views.create('.view-main');
 
 function loadContent() {
-    app.dialog.preloader();
+    cordova.plugin.progressDialog.init({
+        theme : themes.THEME_HOLO_DARK,
+        progressStyle : 'SPINNER',
+        cancelable : false,
+        title : 'Loading...',
+        message : 'Please wait. \nContacting server ...\n',
+    });
     // get json
     var url = 'http://galib45.herokuapp.com/pathology/json';
     console.log(url);
@@ -84,12 +90,16 @@ function loadContent() {
                     }
                 }
             );
-            app.dialog.close();
+            cordova.plugin.progressDialog.dismiss();
         },
         function(xhr, status) {
             console.log(status);
-            app.dialog.close();
-            app.dialog.alert('Network problem', 'Error');
+            cordova.plugin.progressDialog.dismiss();
+            navigator.notification.alert(
+                themes.THEME_DEVICE_DEFAULT_DARK,
+                'Network problem', null,
+                'Error', 'Okay'
+                );
         }
     );
 }
