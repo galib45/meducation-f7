@@ -14,9 +14,37 @@
     background: #000000;
 }
 
+.fas {
+  vertical-align: middle !important;
+}
+
+.list {
+  font-size: 1em !important;
+}
+
+.list .item-title {
+  font-size: 1em !important;
+}
+
+.list .item-label {
+  font-size: 1.2em !important;
+}
+
+.list .item-subtitle {
+  font-size: 1em !important;
+}
+
+.list .item-text {
+  font-size: 1em !important;
+}
+
+.list .item-footer {
+  font-size: 0.75em !important;
+}
+
 .post {
   font-family: 'Roboto';
-  font-size: 130%;
+  font-size: 1.3em;
   padding: 0 10px 5px;
 }
 

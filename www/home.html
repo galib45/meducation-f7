@@ -1,0 +1,44 @@
+<div class="page" data-name="home">
+    <!-- Top Navbar -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <i class="fas fa-bars panel-open padding-left padding-right"></i>
+            </div>
+            <div class="title">Home</div>
+        </div>
+    </div>
+
+    <!-- Scrollable page content -->
+    <div class="page-content ptr-content">
+        <div class="ptr-preloader">
+            <div class="preloader"></div>
+            <div class="ptr-arrow"></div>
+        </div>
+        <div class="list media-list chevron-center no-margin-top no-margin-bottom">
+            <ul style="font-size: {{options.fontSize}};">
+                {{#each articles}}
+                <li>
+                    <a href="#" id="article-{{id}}" class="item-link item-content no-ripple">
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div class="item-title">
+                                    <h1 style="margin: 5px 0 1px; white-space: normal;">{{title}}</h1>
+                                </div>
+                            </div>
+                            <div class="item-subtitle">
+                                <h2 style="margin: 0;" class="text-color-blue">{{subtitle}}</h2>
+                            </div>
+                            <div class="item-text">
+                                <p style="margin: 1px 0 5px;">
+                                    Posted by <b>{{author}}</b> on {{date_created}}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {{/each}}
+            </ul>                        
+        </div>
+    </div>
+</div>

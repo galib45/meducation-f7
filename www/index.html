@@ -13,64 +13,37 @@
     <link rel="stylesheet" href="lib/framework7/css/framework7.min.css">
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/all.js"></script>
 </head>
 
 <body>
-    <div id="app" class="color-theme-white">
+    <div id="app">
         <!-- Statusbar overlay -->
         <div class="statusbar"></div>
+
+        <!-- Left Panel -->
+        <div class="panel panel-left panel-cover panel-init">
+            
+            <div class="block padding-half-left" style="font-size: 2em; font-weight: bold;">
+                <img src="img/icon.png" width="25" height="25" style="vertical-align: middle;">
+                <span class="margin-left">Meducation</span>
+            </div>
+            <div class="block" style="font-size: 1.3em;">
+                <p class="side-menu" id="home-menu">
+                    <i class="fas fa-home margin-right"></i>Home
+                </p>
+                <p class="side-menu" id="settings-menu">
+                    <i class="fas fa-cog margin-right"></i>Settings
+                </p>
+                <p class="side-menu" id="about-menu">
+                    <i class="fas fa-info-circle margin-right"></i>About
+                </a></p>
+            </div>
+        </div>
         
         <!-- Your main view, should have "view-main" class -->
         <div class="view view-main">
-            <!-- Initial Page, "data-name" contains page name -->
-            <div data-name="home" class="page">
-    
-                <!-- Top Navbar -->
-                <div class="navbar text-color-black">
-                    <div class="navbar-inner">
-                        <div class="left padding-left">
-                            <img src="img/icon.png" width="30" height="30" alt="">
-                        </div>
-                        <div class="title">
-                            Meducation
-                        </div>
-                    </div>
-                </div>
-        
-                <!-- Scrollable page content -->
-                <div class="page-content ptr-content">
-                    <div class="ptr-preloader">
-                        <div class="preloader"></div>
-                        <div class="ptr-arrow"></div>
-                    </div>
-                    <div class="list media-list chevron-center no-margin-top no-margin-bottom">
-                        <ul></ul>                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="view" >
-            <div class="page" id="article">
-                <div class="navbar text-color-black">
-                    <div class="navbar-inner sliding">
-                        <div class="left">
-                            <a href="#" class="link back">
-                                <i class="icon icon-back color-black"></i>
-                            </a>
-                        </div>
-                        <div class="title">Read Article</div>
-                    </div>
-                </div>
-                <div class="page-content">
-                    <div class="block-title">Welcome to Articles</div>
-                    <div class="block block-strong">
-                        <p>Framework7 - is a free and open source HTML mobile framework to develop hybrid mobile apps or web apps with iOS or Android (Material) native look and feel. It is also an indispensable prototyping apps tool to show working app prototype as soon as possible in case you need to. Framework7 is created by Vladimir Kharlampidi (iDangero.us).</p>
-                        <p>The main approach of the Framework7 is to give you an opportunity to create iOS and Android (Material) apps with HTML, CSS and JavaScript easily and clear. Framework7 is full of freedom. It doesn't limit your imagination or offer ways of any solutions somehow. Framework7 gives you freedom!</p>
-                        <p>Framework7 is not compatible with all platforms. It is focused only on iOS and Android (Material) to bring the best experience and simplicity.</p>
-                        <p>Framework7 is definitely for you if you decide to build iOS and Android hybrid app (Cordova or PhoneGap) or web app that looks like and feels as great native iOS or Android (Material) apps.</p>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
     <script type="text/javascript" src="cordova.js"></script>

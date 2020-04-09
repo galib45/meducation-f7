@@ -1,20 +1,22 @@
-<div class="page">
-    <div class="navbar text-color-black">
+<div class="page" data-name="article">
+    <div class="navbar">
         <div class="navbar-inner sliding">
             <div class="left">
                 <a href="#" class="link back">
-                    <i class="icon icon-back color-black"></i>
+                    <i class="icon icon-back"></i>
                 </a>
             </div>
             <div class="title">Read Article</div>
         </div>
     </div>
     <div class="page-content">
-        <div class="block">
-            <h1 class="text-color-blue">{{ article.title }}</h1>
-        </div>
+        <article style="font-size: {{options.fontSize}};">
         <div class="block post">
+            <h1 class="text-color-blue" style="font-size: 2.2em;">
+                {{ article.title }}
+            </h1>
             {{ article.content }}
         </div>
+        </article>
     </div>
 </div>

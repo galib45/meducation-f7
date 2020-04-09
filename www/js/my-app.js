@@ -1,6 +1,10 @@
+function Application () {
 // Initialize app
 var myApp = new Framework7();
-var data;
+var data, options;
+var defaults = {
+            fontSize: '14px'
+        };
   
 // If we need to use custom DOM library, let's save it to $$ variable:
 var $$ = Dom7;
@@ -14,13 +18,22 @@ var app = new Framework7({
     id: 'com.galib.meducation',
     // Enable swipe panel
     panel: {
-      swipe: 'left',
+      swipe: true,
+      swipeOnlyClose: true
     },
     // Add default routes
     routes: [
       {
+        path: '/',
+        templateUrl: 'home.html',
+      },
+      {
+        path: '/settings',
+        templateUrl: 'settings.html'
+      },
+      {
         path: '/about',
-        url: 'about.html',
+        templateUrl: 'about.html'
       },
       {
         path: '/article',
@@ -38,7 +51,6 @@ var app = new Framework7({
 
 var mainView = app.views.create('.view-main');
 
-
 function loadContent() {
     app.dialog.preloader();
     // get json
@@ -47,14 +59,23 @@ function loadContent() {
     console.log('getting json...');
     app.request.json(
         url, 
-        function(data, status, xhr) {
+        function(resp, status, xhr) {
             console.log(status);
-            localStorage.setItem('data-meducation', JSON.stringify(data));
+            prettyTables(resp.articles);
+            
+            localStorage.setItem('data-meducation', JSON.stringify(resp));
             console.log('done');
             
             data = JSON.parse(localStorage.getItem('data-meducation'));
-            prepareList(data.articles);
-            
+            mainView.router.navigate(
+                '/',
+                {
+                    context: {
+                        articles: data.articles,
+                        options: options
+                    }
+                }
+            );
             app.dialog.close();
         },
         function(xhr, status) {
@@ -65,55 +86,71 @@ function loadContent() {
     );
 }
 
-function prepareList(articles) {
-    var content, listContent;
-    $$('ul').html('');
-    for (article of articles) {
-        prettyTables(article);
-        content = '<a href="#" id="article-' + article.id + '"' + 
-                'class="item-link item-content no-ripple"><div class="item-inner">' + 
-                '<div class="item-title-row"><div class="item-title">' +
-                '<h1 style="margin: 5px 0 1px; white-space: normal;">' + 
-                article.title + '</h1>' +
-                '</div></div><div class="item-subtitle">' + 
-                '<h2 style="margin: 0;" class="text-color-blue">' + article.subtitle + '</h2></div>' +
-                '<div class="item-text">' + 
-                '<p style="margin: 1px 0 5px;">' + 
-                'Posted by <b>' + article.author + '</b> on ' + article.date_created + 
-                '</p></div></div></a>';
-        listContent = '<li>' + content + '</li>';
-        $$('ul').append(listContent);
-    }
-}
-
-function prettyTables(article) {
-    var newContent = article.content;
-    newContent = newContent.replace(
-        '<table', 
-        '<div style="overflow-x: auto;"><table'
-    );
-    newContent = newContent.replace(
-        '</table>', 
-        '</table></div>'
-    );
-    article.content = newContent;
-}
-
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     log("Device is ready!");
     app.statusbar.show();
-    //localStorage.clear();
+
+    options = localStorage.getItem('opts-meducation');
+    if (options == null) {
+        log('no options set');
+        // set defaults
+        options = defaults;
+    } else {
+        log('loaded options');
+    }
+    
     data = localStorage.getItem('data-meducation');
     if(data == null) {
         loadContent();
     } else {
         data = JSON.parse(data);
-        prepareList(data.articles);
+        mainView.router.navigate(
+            '/',
+            {
+                context: {
+                    articles: data.articles,
+                    options: options
+                },
+            }
+        );
+    }
+});
+
+$$(document).on('page:init', '.page' ,function() {
+    var pageName = $$(this).attr('data-name');
+    log(pageName);
+    if(pageName == 'settings') {
+        $$('#fontSize').click(function() {
+            var config = {
+                title: 'Select font size',
+                items: [
+                    {text: '10 px', value: '10px'},
+                    {text: '12 px', value: '12px'},
+                    {text: '14 px', value: '14px'},
+                    {text: '16 px', value: '16px'},
+                    {text: '18 px', value: '18px'},
+                    {text: '20 px', value: '20px'},
+                ],
+                selectedValue: options.fontSize,
+            };
+            log(config);
+            log(plugins);
+            log(plugins.listpicker.showPicker);
+            plugins.listpicker.showPicker(
+                config,
+                function(item) {
+                    log('selected' + item);
+                    options.fontSize = item;
+                },
+                null
+            );
+        });
     }
 });
 
 $$(document).on('click', 'a', function() {
+    log($$(this).attr('id'));
     var id = $$(this).attr('id').split('-')[1];
     id = data.articles.length - parseInt(id);
     var article = data.articles[id];
@@ -122,22 +159,53 @@ $$(document).on('click', 'a', function() {
         '/article',
         {
             context: {
-                article: article
+                article: article,
+                options: options
             }
         }
     );
 });
 
-$$('.ptr-content').on('ptr:refresh', function() {
+$$(document).on('ptr:refresh', '.ptr-content', function() {
     loadContent();
     app.ptr.done();
 });
 
+$$('.side-menu').on('click', function() {
+    var id = $$(this).attr('id');
+    log('panel menu clicked > ' + id);
+    if (id == 'home-menu') {
+        log('going to home');
+        // navigate to home page
+        mainView.router.navigate(
+            '/',
+            {
+                context: {
+                    articles: data.articles,
+                    options: options
+                }
+            }
+        );
+    } else if (id == 'settings-menu') {
+        log('going to settings');
+        // navigate to settings page
+        mainView.router.navigate(
+            '/settings', {context: {options: options}}
+        );
+    } else if (id == 'about-menu') {
+        log('going to about');
+        // navigate to about page
+        mainView.router.navigate(
+            '/about', {context: {options: options}}
+            );
+    }
+    app.panel.close();
+});
+
 $$(document).on('backbutton', function() {
     log('backbutton');
-    if (mainView.router.url == '/article') {
-        mainView.router.back();
-    } else {
+    log(mainView.router.url);
+    if (mainView.router.url == '/') {
         navigator.notification.confirm(
             '\nAre you sure to close the app?',
             function(buttonIndex) {
@@ -147,5 +215,10 @@ $$(document).on('backbutton', function() {
                 }
             }
         );
+    } else {
+        mainView.router.back();
     }
 });
+}
+
+Application();
