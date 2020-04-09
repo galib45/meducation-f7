@@ -44,7 +44,7 @@
     </platform>
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
     <plugin name="cordova-plugin-device" spec="~2.0.3" />
-    <plugin name="cordova-plugin-dialogs" spec="~2.0.2" />
+    <plugin name="cordova-plugin-dialogs" spec="https://github.com/galib45/cordova-plugin-dialogs" source="git" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
     <plugin name="cordova-plugin-progressdialog" spec="~2.0.1" />
     <plugin name="kr.co.joycorp.cordova.exitapp" spec="~1.0.2" />

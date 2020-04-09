@@ -222,7 +222,8 @@ $$(document).on('backbutton', function() {
                     log('exiting app...');
                     navigator.app.exitApp();
                 }
-            }
+            },
+            themes.THEME_DEVICE_DEFAULT_DARK
         );
     } else {
         mainView.router.back();
