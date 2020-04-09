@@ -42,6 +42,10 @@
   font-size: 0.75em !important;
 }
 
+.theme-dark .item-footer {
+  color: white !important;
+}
+
 .post {
   font-family: 'Roboto';
   font-size: 1.3em;
