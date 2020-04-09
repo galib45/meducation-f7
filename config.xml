@@ -48,5 +48,5 @@
     <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
     <plugin name="cordova-plugin-progressdialog" spec="~2.0.1" />
     <plugin name="kr.co.joycorp.cordova.exitapp" spec="~1.0.2" />
-    <plugin name="cordova-plugin-listpicker" source="git+https://github.com/Riyaz0001/Cordova-ListPicker-Plugin.git" />
+    <plugin name="cordova-plugin-listpicker" spec="https://github.com/Riyaz0001/Cordova-ListPicker-Plugin.git" source="git" />
 </widget>
