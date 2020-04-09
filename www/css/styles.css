@@ -81,6 +81,10 @@ tbody tr:nth-child(even) {
   background-color: #f3f3f3;
 }
 
+.theme-dark tbody tr:nth-child(even) {
+  background-color: #272727;
+}
+
 .post img {
   width: 100% !important;
   height: auto;
@@ -96,4 +100,8 @@ tbody tr:nth-child(even) {
   margin: 0;
   border-radius: 20px;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25); 
+}
+
+.theme-dark blockquote {
+  color: white;
 }

@@ -13,7 +13,7 @@
 
     <!-- Scrollable page content -->
     <div class="page-content">
-        <section style="font-size: {{options.fontSize}};">
+        <section>
             <div class="list no-margin-top no-hairlines no-hairlines-between" style="font-size: 1.5em !important;">
                 <ul>
                     <li id="fontSize">
@@ -21,10 +21,25 @@
                             <div class="item-inner">
                                 <div class="item-title">
                                     Font size
-                                    <div class="item-footer">
+                                    <div class="item-footer" id="fontSizeValue">
                                         {{options.fontSize}}
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item-content padding-top">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    Dark mode
+                                </div>
+                            </div>
+                            <div class="item-after margin-right padding-right">
+                                <label class="toggle toggle-init">
+                                    <input type="checkbox" {{#if options.darkMode}} checked {{/if}}>
+                                    <span class="toggle-icon"></span>
+                                </label>
                             </div>
                         </div>
                     </li>

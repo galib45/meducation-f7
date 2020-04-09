@@ -11,7 +11,8 @@ var themes = {
 var myApp = new Framework7();
 var data, options;
 var defaults = {
-            fontSize: '14px'
+            fontSize: '14px',
+            darkMode: false
         };
   
 // If we need to use custom DOM library, let's save it to $$ variable:
@@ -114,8 +115,16 @@ $$(document).on('deviceready', function() {
         log('no options set');
         // set defaults
         options = defaults;
+        localStorage.setItem('opts-meducation', JSON.stringify(options));
     } else {
         log('loaded options');
+        options = JSON.parse(options);
+    }
+
+    if(options.darkMode) {
+        $$('#app').addClass('theme-dark');
+        $$('.panel').addClass('theme-dark');
+        $$('.view').addClass('theme-dark');
     }
     
     data = localStorage.getItem('data-meducation');
@@ -138,6 +147,9 @@ $$(document).on('deviceready', function() {
 $$(document).on('page:init', '.page' ,function() {
     var pageName = $$(this).attr('data-name');
     log(pageName);
+    if(options.darkMode) {
+        $$('.navbar').addClass('color-theme-black');
+    }
     if(pageName == 'settings') {
         $$('#fontSize').click(function() {
             var config = {
@@ -161,9 +173,20 @@ $$(document).on('page:init', '.page' ,function() {
                 function(item) {
                     log('selected' + item);
                     options.fontSize = item;
+                    localStorage.setItem('opts-meducation', JSON.stringify(options));
+                    $$('#fontSizeValue').html(options.fontSize);
                 },
                 null
             );
+        });
+
+        $$('.toggle').on('toggle:change', function() {
+            options.darkMode = !options.darkMode;
+            $$('#app').toggleClass('theme-dark');
+            $$('.panel').toggleClass('theme-dark');
+            $$('.view').toggleClass('theme-dark');
+            $$('.navbar').toggleClass('color-theme-black');
+            localStorage.setItem('opts-meducation', JSON.stringify(options));
         });
     }
 });
