@@ -60,9 +60,13 @@ var app = new Framework7({
 
 var mainView = app.views.create('.view-main');
 
+function getDialogTheme() {
+    return options.darkMode ? themes.THEME_DEVICE_DEFAULT_DARK : themes.THEME_DEVICE_DEFAULT_LIGHT
+}
+
 function loadContent() {
     cordova.plugin.progressDialog.init({
-        theme : themes.THEME_HOLO_DARK,
+        theme : getDialogTheme(),
         progressStyle : 'SPINNER',
         cancelable : false,
         title : 'Loading...',
@@ -97,7 +101,7 @@ function loadContent() {
             console.log(status);
             cordova.plugin.progressDialog.dismiss();
             navigator.notification.alert(
-                themes.THEME_DEVICE_DEFAULT_DARK,
+                getDialogTheme(),
                 'Network problem', null,
                 'Error', 'Okay'
                 );
@@ -163,11 +167,9 @@ $$(document).on('page:init', '.page' ,function() {
                     {text: '20 px', value: '20px'},
                 ],
                 selectedValue: options.fontSize,
-                androidTheme: themes.THEME_DEVICE_DEFAULT_LIGHT
+                androidTheme: getDialogTheme()
             };
-            log(config);
-            log(plugins);
-            log(plugins.listpicker.showPicker);
+            
             plugins.listpicker.showPicker(
                 config,
                 function(item) {
@@ -249,7 +251,7 @@ $$(document).on('backbutton', function() {
     log(mainView.router.url);
     if (mainView.router.url == '/') {
         navigator.notification.confirm(
-            themes.THEME_DEVICE_DEFAULT_DARK,
+            getDialogTheme(),
             '\nAre you sure to close the app?',
             function(buttonIndex) {
                 if (buttonIndex == 1) {
