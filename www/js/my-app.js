@@ -1,4 +1,12 @@
 function Application () {
+var themes = {
+    THEME_TRADITIONAL: 1,
+    THEME_HOLO_DARK: 2,
+    THEME_HOLO_LIGHT: 3,
+    THEME_DEVICE_DEFAULT_DARK: 4,
+    THEME_DEVICE_DEFAULT_LIGHT: 5
+};
+
 // Initialize app
 var myApp = new Framework7();
 var data, options;
@@ -133,7 +141,7 @@ $$(document).on('page:init', '.page' ,function() {
                     {text: '20 px', value: '20px'},
                 ],
                 selectedValue: options.fontSize,
-                androidTheme: 5
+                androidTheme: themes.THEME_DEVICE_DEFAULT_LIGHT
             };
             log(config);
             log(plugins);
