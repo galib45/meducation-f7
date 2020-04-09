@@ -133,6 +133,7 @@ $$(document).on('page:init', '.page' ,function() {
                     {text: '20 px', value: '20px'},
                 ],
                 selectedValue: options.fontSize,
+                androidTheme: 5
             };
             log(config);
             log(plugins);

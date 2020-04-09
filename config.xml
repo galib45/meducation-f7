@@ -10,7 +10,6 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
-    
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/ldpi.png" />
         <icon density="mdpi" src="www/res/icon/android/mdpi.png" />
@@ -31,7 +30,6 @@
         <splash density="port-xxhdpi" src="www/res/screen/android/splash-port-xxhdpi.png" />
         <splash density="port-xxxhdpi" src="www/res/screen/android/splash-port-xxxhdpi.png" />
     </platform>
-
     <access origin="*" />
     <access origin="http://galib45.herokuapp.com" />
     <allow-navigation href="*" />
@@ -44,12 +42,11 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    
     <plugin name="cordova-plugin-statusbar" spec="~2.4.3" />
     <plugin name="cordova-plugin-device" spec="~2.0.3" />
     <plugin name="cordova-plugin-dialogs" spec="~2.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.4" />
     <plugin name="cordova-plugin-progressdialog" spec="~2.0.1" />
     <plugin name="kr.co.joycorp.cordova.exitapp" spec="~1.0.2" />
-    <plugin name="cordova-plugin-listpicker" spec="~2.2.2" />
+    <plugin name="cordova-plugin-listpicker" source="git+https://github.com/Riyaz0001/Cordova-ListPicker-Plugin.git" />
 </widget>
