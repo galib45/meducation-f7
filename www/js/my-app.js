@@ -216,6 +216,7 @@ $$(document).on('backbutton', function() {
     log(mainView.router.url);
     if (mainView.router.url == '/') {
         navigator.notification.confirm(
+            themes.THEME_DEVICE_DEFAULT_DARK,
             '\nAre you sure to close the app?',
             function(buttonIndex) {
                 if (buttonIndex == 1) {
@@ -223,7 +224,6 @@ $$(document).on('backbutton', function() {
                     navigator.app.exitApp();
                 }
             },
-            themes.THEME_DEVICE_DEFAULT_DARK
         );
     } else {
         mainView.router.back();
